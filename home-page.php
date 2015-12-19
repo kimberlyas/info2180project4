@@ -23,10 +23,41 @@
 					$("#userList").load("displayUserList.php");
 				}, 1000); //AUTO LOAD USER LIST every sec
 
+				// Get userid of current logged in user
 				var userID = document.getElementById("userID").value;
-				setTimeout(function(){
+				
+				// Get time user logged in
+				//var loginTime = document.getElementById("loginTime").value;
+				//var refresh = 0;
+
+				setInterval(function(){
+					/*// Get current time
+					var time = new Date();
+					var currentTime = time.getHours() + ":" + time.getMinutes(); + ":" + time.getSeconds();
+					console.log(currentTime);
+					
+					console.log(refresh);
+					if (refresh > 0)
+					{
+						// Get id of latest message --> idMsg10
+						var lastID = document.getElementById("idMsg10").textContent;
+					}
+					else
+					{
+						var lastID = 2000;
+					}
+
+					// Create Datastring to be sent
+					var dataString = '?id='+ userID + '&last=' + lastID + '&currentTime=' + currentTime;*/
+
 					$("#inbox").load("cheapoInbox.php?id="+userID);
-				}, 1000); // AUTO LoAD inbox messages
+
+					//refresh++;
+					
+
+				}, 2000); // AUTO LoAD inbox messages
+
+
 
 			}); 
 		
@@ -51,6 +82,7 @@
 					<!-- Hidden Fields for Session Data -->
 					<input type="hidden" id="user" value="<?=$_SESSION['username'];?>"></input>
 					<input type="hidden" id="userID" value="<?=$_SESSION['userID'];?>"></input>
+					<input type="hidden" id="loginTime" value="<?=$_SESSION['loginTime'];?>"></input>
 					<button id="logout" class="animated"><a href = "logout.php" style="color: #fff">Logout<a/></button>
 				</div>
 			</div>
@@ -293,7 +325,7 @@
 		</div>
 		<!-- end of body middle -->
 		<div class="body-last" id="msgView">
-			<div class="mail-box-header" style="background-color:#2E3740"> <!-- VIEW MESSAGE -->
+			<div class="mail-box-header" > <!-- VIEW MESSAGE -->
 				<div class="pull-right animated">
 					<a href="https://docs.google.com/document/d/1MVz2yxtQd0JtXuTJ6FFmbnyRC_gMn-dlpmsXupZMXs8/edit#" target="_blank" class="link color-link reply">Need Help?</a>
 				</div>
@@ -304,7 +336,7 @@
 					<h5 class="h5"><span class="font-normal"></span></h5>
 				</div>
 			</div> <!-- end of header -->			
-			<div class="mail-box" style="background-color:#2E3740">
+			<div class="mail-box" > <!-- style="background-color:#2E3740" -->
 				<div class="mail-body">
 					<p align="center">NO MESSAGE SELECTED<br>
 					<br></p>
