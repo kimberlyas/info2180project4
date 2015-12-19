@@ -39,6 +39,8 @@
          	  // Assign session variables
          	  $_SESSION["username"] = $username;
          	  $_SESSION["userID"] = $row['id'];
+              $_SESSION["loginTime"] = date("H:i:s"); //time user logged in
+
    			
             
                 // Redirect to homescreen
